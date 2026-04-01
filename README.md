@@ -1,73 +1,219 @@
-# React + TypeScript + Vite
+# 🀄 Hand Betting Game (Mahjong Tiles)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based **Hand Betting Game** built with **React + TypeScript**, focused on **state management, UI polish, and scalability**.
 
-Currently, two official plugins are available:
+This project was developed as part of a technical assessment and is designed to be **feature-ready and easily extensible**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+# 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🎮 Core Gameplay
 
-## Expanding the ESLint configuration
+* Draw Mahjong tile hands (Number, Wind, Dragon)
+* Bet on whether the next hand will be **Higher** or **Lower**
+* Dynamic scoring system
+* Game-over conditions:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  * Any tile value reaches **0 or 10**
+  * Draw pile exhausted for the **3rd time**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🧠 Advanced Game Logic
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+* Dynamic scaling for **Dragon/Wind tiles**
+* Deck reshuffling with discard pile merging
+* Event-driven state updates
+* Deterministic hand calculation
+
+---
+
+## ✨ UI & UX Highlights
+
+* Premium dark theme with animated background
+* Smooth transitions using **Framer Motion**
+* Sound effects:
+
+  * Tile click
+  * Win chime
+  * Lose feedback
+* Particle effects on win
+* Score count-up animation
+* Active hand glow
+* Skeleton placeholders for empty states
+
+---
+
+## 📊 Game Interface
+
+* Current Hand (highlighted)
+* Previous Hand
+* Game Stats (score, reshuffles, deck state)
+* Scrollable History (left → right timeline)
+* Leaderboard (top scores)
+
+---
+
+# 🏗️ Tech Stack
+
+### Frontend
+
+* React (Functional Components)
+* TypeScript (strict mode)
+* Zustand (state management)
+* Framer Motion (animations)
+
+### Styling
+
+* Custom CSS (Design system + tokens)
+* No external UI library (fully handcrafted UI)
+
+### Architecture
+
+* Feature-based structure
+* Component-driven design
+* Event-driven state updates
+
+---
+
+# 🧩 Key Concepts Demonstrated
+
+## React & State
+
+* Advanced hooks usage (`useState`, `useEffect`, `useRef`)
+* Event-based state handling (avoiding stale updates)
+* Conditional rendering patterns
+
+## Architecture
+
+* Feature-based folder structure
+* Separation of UI and logic
+* Reusable components
+
+## Performance & UX
+
+* Controlled re-renders (Zustand)
+* Animation-driven feedback
+* Skeleton loading patterns
+
+---
+
+# ⚙️ Setup Instructions
+
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/Muhammad-Suleman-Hamza/hand-betting-game
+cd hand-betting-game
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 2. Install dependencies
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+---
+
+## 3. Run development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 4. Open in browser
+
+```text
+http://localhost:5173
+```
+
+---
+
+# 📁 Project Structure (Simplified)
+
+```text
+src/
+ ├── features/
+ │   └── game/
+ │       ├── gameStore.ts
+ │       ├── utils/
+ │       └── types/
+ ├── components/
+ │   ├── GameBoard.tsx
+ │   ├── Tile.tsx
+ │   └── UI components
+ ├── pages/
+ │   ├── LandingPage.tsx
+ │   ├── GamePage.tsx
+ │   └── SummaryPage.tsx
+ ├── App.tsx
+ └── index.css
+```
+
+---
+
+# 🧪 Game Rules Summary
+
+* Each hand consists of **2 tiles**
+* Player bets on next hand:
+
+  * Higher
+  * Lower
+* Tile values:
+
+  * Number tiles → face value
+  * Dragon/Wind → dynamic values (start at 5)
+
+---
+
+# 🏁 Game Over Conditions
+
+* Any tile reaches value **0 or 10**
+* Draw pile runs out **3 times**
+
+---
+
+# 🤖 AI Usage Disclosure
+
+AI was used as a **development assistant** for:
+
+* refining architecture decisions
+* improving UI/UX ideas
+* generating boilerplate and patterns
+
+All core logic, structure, and decisions were **reviewed, customized, and implemented manually**.
+
+---
+
+# 🚀 Future Improvements
+
+* Backend integration (Node.js + Express)
+* Persistent leaderboard (API)
+* Authentication system
+* SSR / Server Components (via Next.js)
+* Multiplayer mode
+* Analytics dashboard
+
+---
+
+# 🎯 Notes
+
+This project prioritizes:
+
+* **Scalability**
+* **Code quality**
+* **User experience**
+
+The architecture is intentionally designed to allow **easy feature extensions**, as required by the assessment.
+
+---
+
+# 👨‍💻 Author
+
+Muhammad Suleman Hamza
+Senior Full Stack Developer
